@@ -42,9 +42,10 @@ function App() {
         processCalculatorFieldUpdate("*"); break;
       case '/':
         processCalculatorFieldUpdate("/"); break;
+      case '.':
+        processCalculatorFieldUpdate("."); break;
       case 'b': // Backspace
-      calculatorField.length > 1 ? setCalculatorField(calculatorField.slice(0, -1)) : setCalculatorField("0");
-        break;
+        calculatorField.length > 1 ? setCalculatorField(calculatorField.slice(0, -1)) : setCalculatorField("0"); break;
       case 'c': // Clear
         setCalculatorField("0"); break;
       case 'e': // Enter
@@ -84,6 +85,7 @@ function App() {
       <button onClick={handleButtonClick('1')} className="button">1</button>
       <button onClick={handleButtonClick('2')} className="button">2</button>
       <button onClick={handleButtonClick('3')} className="button">3</button>
+      <button onClick={handleButtonClick('.')} className="button period">.</button>
       <button onClick={handleButtonClick('0')} className="button zero">0</button>
       <button onClick={handleButtonClick('b')} className="button backspace">&lt;</button>
     </div>
