@@ -34,15 +34,15 @@ function App() {
         processCalculatorFieldUpdate("9"); break;
       case '0':
         processCalculatorFieldUpdate("0"); break;
-      case '+': // Addition
+      case '+':
         processCalculatorFieldUpdate("+"); break;
-      case '-': // Subtraction
+      case '-':
         processCalculatorFieldUpdate("-"); break;
-      case '*': // Multiplication
+      case '*':
         processCalculatorFieldUpdate("*"); break;
-      case '/': // Division
+      case '/':
         processCalculatorFieldUpdate("/"); break;
-      case 'b': // Clear
+      case 'b': // Backspace
       calculatorField.length > 1 ? setCalculatorField(calculatorField.slice(0, -1)) : setCalculatorField("0");
         break;
       case 'c': // Clear
@@ -55,7 +55,6 @@ function App() {
           console.log("erroneous calculation");
           return;
         }
-        
         setCalculatorField(mathResult.toString()); break;
       default:
         console.log("input error"); break;
