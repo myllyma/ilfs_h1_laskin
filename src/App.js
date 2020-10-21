@@ -42,10 +42,21 @@ function App() {
         processCalculatorFieldUpdate("*"); break;
       case '/': // Division
         processCalculatorFieldUpdate("/"); break;
+      case 'b': // Clear
+      calculatorField.length > 1 ? setCalculatorField(calculatorField.slice(0, -1)) : setCalculatorField("0");
+        break;
       case 'c': // Clear
         setCalculatorField("0"); break;
       case 'e': // Enter
-        setCalculatorField(stringMath(calculatorField).toString()); break;
+        let mathResult = 0;
+        try {
+          mathResult = stringMath(calculatorField);
+        } catch (error) {
+          console.log("erroneous calculation");
+          return;
+        }
+        
+        setCalculatorField(mathResult.toString()); break;
       default:
         console.log("input error"); break;
     }
@@ -70,11 +81,12 @@ function App() {
       <button onClick={handleButtonClick('4')} className="button">4</button>
       <button onClick={handleButtonClick('5')} className="button">5</button>
       <button onClick={handleButtonClick('6')} className="button">6</button>
-      <button onClick={handleButtonClick('e')} className="button enter">enter</button>
+      <button onClick={handleButtonClick('e')} className="button enter">=</button>
       <button onClick={handleButtonClick('1')} className="button">1</button>
       <button onClick={handleButtonClick('2')} className="button">2</button>
       <button onClick={handleButtonClick('3')} className="button">3</button>
       <button onClick={handleButtonClick('0')} className="button zero">0</button>
+      <button onClick={handleButtonClick('b')} className="button backspace">&lt;</button>
     </div>
   );
 }
