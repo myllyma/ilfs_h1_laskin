@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import {useState} from 'react';
+import 'string-math';
+import stringMath from 'string-math';
 
 function App() {
   const [calculatorInput, setCalculatorInput] = useState("");
@@ -53,7 +55,7 @@ function App() {
         setCalculatorInput("");
         break;
       case 'e':
-        setCalculatorInput(eval(calculatorInput).toString());
+        setCalculatorInput(stringMath(calculatorInput).toString());
         break;
       default:
         console.log("input error");
