@@ -5,61 +5,52 @@ import 'string-math';
 import stringMath from 'string-math';
 
 function App() {
-  const [calculatorInput, setCalculatorInput] = useState("");
+  const [calculatorInput, setCalculatorInput] = useState("0");
+
+  const updateOutput = (input) => {
+    if (calculatorInput === "0") {
+      setCalculatorInput(input);
+    } else {
+      setCalculatorInput(calculatorInput.concat(input));
+    }
+  }
 
   const buttonClicked = (pressedButton) => () => {
     switch (pressedButton) {
       case '1':
-        setCalculatorInput(calculatorInput.concat("1"));
-        break;
+        updateOutput("1"); break;
       case '2':
-        setCalculatorInput(calculatorInput.concat("2"));
-        break;
+        updateOutput("2"); break;
       case '3':
-        setCalculatorInput(calculatorInput.concat("3"));
-        break;
+        updateOutput("3"); break;
       case '4':
-        setCalculatorInput(calculatorInput.concat("4"));
-        break;
+        updateOutput("4"); break;
       case '5':
-        setCalculatorInput(calculatorInput.concat("5"));
-        break;
+        updateOutput("5"); break;
       case '6':
-        setCalculatorInput(calculatorInput.concat("6"));
-        break;
+        updateOutput("6"); break;
       case '7':
-        setCalculatorInput(calculatorInput.concat("7"));
-        break;
+        updateOutput("7"); break;
       case '8':
-        setCalculatorInput(calculatorInput.concat("8"));
-        break;
+        updateOutput("8"); break;
       case '9':
-        setCalculatorInput(calculatorInput.concat("9"));
-        break;
+        updateOutput("9"); break;
       case '0':
-        setCalculatorInput(calculatorInput.concat("0"));
-        break;
+        updateOutput("0"); break;
       case '+':
-        setCalculatorInput(calculatorInput.concat("+"));
-        break;
+        updateOutput("+"); break;
       case '-':
-        setCalculatorInput(calculatorInput.concat("-"));
-        break;
+        updateOutput("-"); break;
       case '*':
-        setCalculatorInput(calculatorInput.concat("*"));
-        break;
+        updateOutput("*"); break;
       case '/':
-        setCalculatorInput(calculatorInput.concat("/"));
-        break;
+        updateOutput("/"); break;
       case 'c':
-        setCalculatorInput("");
-        break;
+        setCalculatorInput("0"); break;
       case 'e':
-        setCalculatorInput(stringMath(calculatorInput).toString());
-        break;
+        setCalculatorInput(stringMath(calculatorInput).toString()); break;
       default:
-        console.log("input error");
-        break;
+        console.log("input error"); break;
     }
   }
 
