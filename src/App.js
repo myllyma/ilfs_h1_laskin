@@ -5,14 +5,10 @@ import 'string-math';
 import stringMath from 'string-math';
 
 function App() {
-  const [calculatorInput, setCalculatorInput] = useState("0");
+  const [calculatorField, setCalculatorField] = useState("0");
 
   const updateOutput = (input) => {
-    if (calculatorInput === "0") {
-      setCalculatorInput(input);
-    } else {
-      setCalculatorInput(calculatorInput.concat(input));
-    }
+    calculatorField === "0" ? setCalculatorField(input) : setCalculatorField(calculatorField.concat(input));
   }
 
   const buttonClicked = (pressedButton) => () => {
@@ -37,30 +33,31 @@ function App() {
         updateOutput("9"); break;
       case '0':
         updateOutput("0"); break;
-      case '+':
+      case '+': // Addition
         updateOutput("+"); break;
-      case '-':
+      case '-': // Subtraction
         updateOutput("-"); break;
-      case '*':
+      case '*': // Multiplication
         updateOutput("*"); break;
-      case '/':
+      case '/': // Division
         updateOutput("/"); break;
-      case 'c':
-        setCalculatorInput("0"); break;
-      case 'e':
-        setCalculatorInput(stringMath(calculatorInput).toString()); break;
+      case 'c': // Clear
+        setCalculatorField("0"); break;
+      case 'e': // Enter
+        setCalculatorField(stringMath(calculatorField).toString()); break;
       default:
         console.log("input error"); break;
     }
   }
 
-  const handleCalculatorInputChange = (event) => {
-    setCalculatorInput(event.target.value);
+  // Update the calculator field based on user input
+  const handleCalculatorFieldChange = (event) => {
+    setCalculatorField(event.target.value);
   }
 
   return (
     <div className="App">
-      <input type="text" value={calculatorInput} onChange={handleCalculatorInputChange} className="calc_input"></input>
+      <input type="text" value={calculatorField} onChange={handleCalculatorFieldChange} className="calc_input"></input>
       <button onClick={buttonClicked('+')} className="button">+</button>
       <button onClick={buttonClicked('-')} className="button">-</button>
       <button onClick={buttonClicked('*')} className="button">*</button>
